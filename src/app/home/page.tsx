@@ -1,3 +1,5 @@
+'use client'
+
 import { editMetadata } from '@/api'
 import {
   Container,

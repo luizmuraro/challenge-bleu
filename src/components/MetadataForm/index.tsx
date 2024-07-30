@@ -1,3 +1,5 @@
+'use client'
+
 import { MetadataFormProps } from '@/components/MetadataForm/types'
 import { useCallback, useState } from 'react'
 import {
