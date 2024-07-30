@@ -31,13 +31,16 @@ const Home = () => {
   const [search, setSearch] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { data: contractData, isLoading: isReadContractLoading } =
-    useReadContract({
-      address: CONTRACT_ADDRES,
-      abi: ABI,
-      functionName: 'poolIdMetadataCIDMap',
-      args: [selectedPoolID],
-    })
+  const {
+    data: contractData,
+    isLoading: isReadContractLoading,
+    isSuccess,
+  } = useReadContract({
+    address: CONTRACT_ADDRES,
+    abi: ABI,
+    functionName: 'poolIdMetadataCIDMap',
+    args: [selectedPoolID],
+  })
 
   const { writeContract } = useWriteContract()
 
@@ -49,7 +52,7 @@ const Home = () => {
     setIsModalOpen(false)
   }, [])
 
-  const { data, refetch: refetchPools } = useQuery<IQueryData>(GET_POOLS)
+  const { data } = useQuery<IQueryData>(GET_POOLS)
 
   const onPinJSONToIPFS = useCallback(async (formData: IOnPinJSONToIPFS) => {
     const data = JSON.stringify({
@@ -90,13 +93,12 @@ const Home = () => {
           functionName: 'setPoolMetadata',
           args: [poolId, response.data.IpfsHash],
         })
-        refetchPools()
       }
     },
-    [onPinJSONToIPFS, refetchPools, writeContract],
+    [onPinJSONToIPFS, writeContract],
   )
   const handleEmptyContract = useCallback(() => {
-    if (data && data.pools.items.find(({ id }) => id === selectedPoolID)) return
+    if (data?.pools.items.find(({ id }) => id === selectedPoolID)) return
 
     writeContract({
       abi: ABI,
@@ -111,6 +113,7 @@ const Home = () => {
       try {
         const request = await fetch(`${URL}/${cid}`)
         const response = await request.json()
+
         setIsModalOpen(true)
 
         if (!isModalOpen) {
@@ -139,6 +142,8 @@ const Home = () => {
         return response
       } catch (error) {
         handleEmptyContract()
+        setSelectedPoolID('')
+        setSearch('')
         console.log('error:', error)
       }
     },
@@ -150,10 +155,16 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if (selectedPoolID && !isReadContractLoading) {
+    if (selectedPoolID && !isReadContractLoading && isSuccess) {
       fetchFileFromIPFS({ cid: String(contractData), poolId: selectedPoolID })
     }
-  }, [contractData, fetchFileFromIPFS, selectedPoolID, isReadContractLoading])
+  }, [
+    contractData,
+    fetchFileFromIPFS,
+    selectedPoolID,
+    isReadContractLoading,
+    isSuccess,
+  ])
 
   return (
     <Container>

@@ -23,7 +23,7 @@ export const Input = styled.input`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: ${({ editable }) => (editable ? '#fff' : '#e9ecef')};
+  background-color: #e9ecef;
 `
 
 export const TextArea = styled.textarea`
@@ -31,7 +31,7 @@ export const TextArea = styled.textarea`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: ${({ editable }) => (editable ? '#fff' : '#e9ecef')};
+  background-color: #e9ecef;
 `
 
 export const Button = styled.button`
