@@ -3,21 +3,18 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  background-color: azure;
+`
+export const Content = styled.div`
+  display: flex;
+  flex: 1;
   justify-content: center;
 `
-
 export const SearchBarContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  align-self: center;
-  justify-self: center;
+  align-items: center;
+  height: 100vh;
 `
-
 export const SearchInput = styled.input`
   width: 400px;
   padding: 10px;

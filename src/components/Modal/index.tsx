@@ -1,3 +1,4 @@
+'use client'
 import { ModalProps } from '@/components/Modal/types'
 import {
   ButtonsContainer,

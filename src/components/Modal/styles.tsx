@@ -17,7 +17,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   background-color: rgba(0, 0, 0, 0.4);
 `
 
-// Estilo para o conteúdo do modal
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;

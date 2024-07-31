@@ -1,3 +1,4 @@
+'use client'
 import { ModalProvider } from '@/infra/providers/modal'
 import { WagmiProvider } from '@/infra/providers/wagmi'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'

@@ -3,6 +3,7 @@
 import { editMetadata } from '@/api'
 import {
   Container,
+  Content,
   SearchBarContainer,
   SearchButton,
   SearchInput,
@@ -171,7 +172,14 @@ const Home = () => {
       {!isConnected ? (
         <ConnectButton />
       ) : (
-        <>
+        <Content>
+          <Sidebar
+            pools={data?.pools.items || []}
+            onPoolClick={({ id, metadataCID }: Pool) =>
+              fetchFileFromIPFS({ poolId: id, cid: metadataCID })
+            }
+          />
+
           <SearchBarContainer>
             <SearchInput
               type="text"
@@ -183,13 +191,7 @@ const Home = () => {
               <FaSearch size={18} />
             </SearchButton>
           </SearchBarContainer>
-          <Sidebar
-            pools={data?.pools.items || []}
-            onPoolClick={({ id, metadataCID }: Pool) =>
-              fetchFileFromIPFS({ poolId: id, cid: metadataCID })
-            }
-          />
-        </>
+        </Content>
       )}
     </Container>
   )
