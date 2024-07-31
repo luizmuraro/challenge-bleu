@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## BLEU CHALLENGE
 
-## Getting Started
+This project is a simple React component that demonstrates how to interact with the Balancer Pool metadata contract at Sepolia. The idea was to create a simple dAPP, with a intuitive UI and simple to use.
 
-First, run the development server:
+## Deployed Version
+[Link to Deployed Version](https://challenge-bleu.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Video Walkthrough
+[Video apresnetation](https://www.loom.com/share/e01daed176a34c7aaf3450dd2f73345a?sid=0e074e85-840b-49c7-b88f-937f652d7619).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup and Running Instructions
+- Fisrt you need to clone this respository ``git clone https://github.com/luizmuraro/challenge-bleu.git``.
+- After that you need to run ``yarn``  or ``npm install`` to install all node modules.
+- Now you are good to go, just run ``yarn dev`` and check the App at browser, by default the port is 3000.
+OBs: This app's uses Ponder to list all your pools, if you want to test all features, you can check and run [this](https://github.com/luizmuraro/bleu-ponder) project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Implemented features
+- Search bar to get the metadata of a given poolId.
+- Side bar with all pools from the user.
+- Modal with a form, to vizualize and edit pool's metadata.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Priorities 
+  My idea doing the project was prioritize all things related with web3:
+ 
+- I've started building a simple search bar, to be able to read a contract.
+- After that, I build a simple form to be able to write a contract.
+- Later I did the Modal, that it´s responsible for all the metadata vizualization.
+- And last, I did the sidebar, integrated with the Ponder project.
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+The idea was to do a modular project, differing and separating all types of files, such as UI files, logic files, hooks, infrascrture codes etc..
+Unfortunly I was not able to do everything that I want, but my main idea was:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Modularity: The project should be modular, with clear separation between different types of functionality (e.g., UI components, API logic, infrastructure code).
+- Reusability: Components should be broken down into smaller, reusable pieces, which promotes code reuse and easier maintenance.
+- Scalability: The structure is designed to scale, allowing for easy addition of new features without significant refactoring.
+- Separation of Concerns: The code should be organized to separate different concerns (e.g., UI, state management, API calls), making the codebase easier to navigate and understand.
+  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
