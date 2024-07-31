@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 export const queryClient = new QueryClient()
 
 const client = new ApolloClient({
-  uri: 'http://localhost:42069/',
+  uri: 'bleu-ponder-production.up.railway.app/',
   cache: new InMemoryCache(),
 })
 
